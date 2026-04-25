@@ -1,0 +1,6 @@
+/.vscode
+/.idea
+/.condarc
+/kst_pan/*/__pycache__
+/dataset/*
+/cache/*
