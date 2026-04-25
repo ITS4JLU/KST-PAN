@@ -71,7 +71,7 @@ class SpatioTemporalGate(nn.Module):
 
 class STEncoderBlock(nn.Module):
     def __init__(self, dim, s_attn_size, t_attn_size,
-                 geo_num_heads=4, sem_num_heads=2, t_num_heads=2,
+                 s_num_heads=4, t_num_heads=2,
                  mlp_ratio=4., sem_attn_mode="dynamic", t_attn_mode="patch",
                  qkv_bias=True, drop=0., attn_drop=0., drop_path=0.,
                  act_layer=nn.GELU, norm_layer=nn.LayerNorm,
@@ -88,7 +88,7 @@ class STEncoderBlock(nn.Module):
 
         self.norm_time = norm_layer(dim)
 
-        spat_attn_out_channels = dim // (geo_num_heads + sem_num_heads + t_num_heads)
+        spat_attn_out_channels = dim
         self.norm_spat = norm_layer(spat_attn_out_channels)
 
         if t_attn_mode == 'patch':
@@ -99,7 +99,7 @@ class STEncoderBlock(nn.Module):
         if sem_attn_mode == 'dynamic':
             self.spat_attn = PKSAConv(
                 dim, spat_attn_out_channels,
-                sem_num_heads, num_dgat_rounds=num_dgat_rounds,
+                s_num_heads, num_dgat_rounds=num_dgat_rounds,
                 dtw_delta=dtw_delta
             )
             self.spat_proj = nn.Linear(spat_attn_out_channels, dim)
@@ -172,8 +172,7 @@ class KST_PAN(nn.Module):
         self.skip_dim = config.get("skip_dim", 256)
         lape_dim = config.get('lape_dim', 8)
 
-        geo_num_heads = config.get('geo_num_heads', 4)
-        sem_num_heads = config.get('sem_num_heads', 2)
+        s_num_heads = config.get('s_num_heads', 4)
         t_num_heads = config.get('t_num_heads', 2)
         mlp_ratio = config.get("mlp_ratio", 4)
         qkv_bias = config.get("qkv_bias", True)
@@ -191,6 +190,7 @@ class KST_PAN(nn.Module):
 
         add_time_in_day = config.get("add_time_in_day", True)
         add_day_in_week = config.get("add_day_in_week", True)
+        add_holiday = config.get("add_holiday", False)
 
         self.device = config.get('device', torch.device('cpu'))
         self.world_size = config.get('world_size', 1)
@@ -251,7 +251,7 @@ class KST_PAN(nn.Module):
 
         self.enc_embed_layer = DataEmbedding(
             self.feature_dim - self.ext_dim, self.embed_dim, lape_dim, self.adj_mx,
-            drop=drop, add_time_in_day=add_time_in_day, add_day_in_week=add_day_in_week,
+            drop=drop, add_time_in_day=add_time_in_day, add_day_in_week=add_day_in_week, add_holiday=add_holiday,
             device=self.device
         )
 
@@ -278,7 +278,7 @@ class KST_PAN(nn.Module):
             STEncoderBlock(
                 dim=self.embed_dim, s_attn_size=self.s_attn_size,
                 t_attn_size=self.t_attn_size,
-                geo_num_heads=geo_num_heads, sem_num_heads=sem_num_heads,
+                s_num_heads=s_num_heads,
                 t_num_heads=t_num_heads, mlp_ratio=mlp_ratio,
                 sem_attn_mode=self.sem_attn_mode, t_attn_mode=self.t_attn_mode,
                 qkv_bias=qkv_bias, drop=drop, attn_drop=attn_drop,

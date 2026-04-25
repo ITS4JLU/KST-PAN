@@ -1,0 +1,1104 @@
+% Template for Elsevier CRC journal article
+% version 1.1-5p dated 18 January 2011
+
+% This file (c) 2010-2011 Elsevier Ltd.  Modifications may be freely made,
+% provided the edited file is saved under a different name
+
+% This file contains modifications for Procedia Computer Science
+% but may easily be adapted to other journals
+
+% Changes since version 1.0
+% - elsarticle class option changed from 1p to 3p (to better reflect CRC layout)
+% - this version uses option 5p for larger-form
+
+%-----------------------------------------------------------------------------------
+
+%% This template uses the elsarticle.cls document class and the extension package ecrc.sty
+%% For full documentation on usage of elsarticle.cls, consult the documentation "elsdoc.pdf"
+%% Further resources available at http://www.elsevier.com/latex
+
+%-----------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Important note on usage                  %%
+%% -----------------------                  %%
+%% This file must be compiled with PDFLaTeX %%
+%% Using standard LaTeX will not work!      %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  authoryear
+%% The '5p' and 'times' class options of elsarticle are used for Elsevier CRC
+% \documentclass[5p,times,number]{elsarticle}
+\documentclass[5p,times,authoryear]{elsarticle}
+% \usepackage{ctex}
+
+\usepackage[english]{babel}     % English language support
+\addto\captionsenglish{%
+\def\tablename{Table}%          % Define table name in English
+}
+% \usepackage[latin1]{inputenc}   % Latin encoding (commented out)
+\usepackage{amsmath}            % Enhanced math support and equation referencing
+\usepackage{epstopdf}           % EPS to PDF conversion for pdflatex
+\usepackage{flushend}           % Balance columns on last page
+%\usepackage{hyperref}           % Hyperlinks (commented to avoid conflicts)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Core packages for document formatting and functionality
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tabularx}           % Extended table functionality
+\usepackage{amssymb}            % Additional mathematical symbols
+\usepackage{amsfonts}           % Mathematical fonts
+\usepackage{placeins}           % Float placement control
+\usepackage{setspace}           % Line spacing control
+\linespread{1}                  % Set line spacing (1.0x)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Caption and figure/table formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[justification=centering]{caption} % Center captions by default
+\captionsetup[table]{skip=2pt}  % Distance between table caption and content
+\captionsetup[figure]{skip=2pt} % Distance between figure caption and content
+\captionsetup{justification=raggedright, singlelinecheck=false} % Left-align captions
+\setlength{\abovecaptionskip}{2pt} % Space above captions
+\setlength{\belowcaptionskip}{2pt} % Space below captions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Mathematical equation formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fleqn}              % Left-align equations
+\setlength{\mathindent}{0pt}    % No indentation for equations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Table and figure enhancement packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{booktabs}           % Professional table rules
+\usepackage{graphicx}           % Image inclusion support
+\usepackage{subcaption}         % Subfigure and subcaption support
+\usepackage{float}              % Enhanced float control
+\usepackage{multirow}           % Table cell merging across rows
+\usepackage{makecell}           % Enhanced table cell formatting
+\usepackage{longtable}          % Multi-page table support
+\usepackage{array}              % Extended column formatting
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document enhancement packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}           % Hyperlinks and cross-references
+\usepackage{enumitem}           % Enhanced list formatting
+\usepackage{bm}                 % Bold mathematical symbols
+\usepackage{siunitx}            % Proper unit formatting
+\usepackage{natbib}             % Bibliography management
+\usepackage{lastpage}
+\usepackage{marvosym}
+\usepackage{microtype}          % Improve font alignment and spacing
+\sloppy                         % Allow more flexible line breaking
+\hyphenpenalty=1000             % Reduce unnecessary hyphenation
+\exhyphenpenalty=1000           % Reduce explicit hyphenation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Section formatting and title control
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlesec}           % Section title formatting
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Additional LaTeX packages and configurations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Note: amssymb package already loaded above - provides mathematical symbols
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% Line numbering support (optional)
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%% \usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document rotation support for landscape tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Support for landscape tables if needed
+\usepackage[figuresright]{rotating}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Custom definitions and theorem environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Put your own definitions here:
+%   \newcommand{\cZ}{\cal{Z}}
+%   \newtheorem{def}{Definition}[section]
+%   ...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hyphenation exceptions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add words to TeX's hyphenation exception list
+%\hyphenation{author another created financial paper re-commend-ed Post-Script}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Additional figure support (deprecated packages removed)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Note: subfigure package removed due to conflict with subcaption
+% Use subcaption package instead for subfigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT BEGINS HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% Adjust equation spacing (must be after \begin{document})
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FRONT MATTER SECTION
+%% Contains title, authors, abstract, keywords
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITLE, AUTHORS AND ADDRESSES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Title formatting notes:
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% Example usage:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+%% Document header (optional)
+%\dochead{Short communication}
+%% Use \dochead if there is an article header, e.g. \dochead{Short communication}
+
+%% Main paper title
+\title{KST-PAN: A Prior-Guided Kernelized Spatio-Temporal Patch Attention \\ Network for Traffic Flow Prediction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% AUTHORS AND AFFILIATIONS
+%% Use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[First]{Wen Yan}
+
+\author[First]{Lili Zheng}
+
+\author[Second]{Wenqian Chen}
+
+\author[First]{Tongqiang Ding \corref{cor1}}
+\ead{dingtq@jlu.edu.cn}
+
+\author[First]{Qiuyang Huang}
+
+\author[Third]{Wei Liu}
+\author[Third]{Qiuwen Yin}
+
+\cortext[cor1]{Corresponding author}
+
+\address[First]{Transportation College, Jilin University, Changchun 130022, China}
+
+\address[Second]{College of Communication Engineering, Jilin University, Changchun 130012, China}
+
+\address[Third]{Jilin Traffic Planning and Design Institute, Changchun 130021, China}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ABSTRACT SECTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% KEYWORDS SECTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{keyword}
+% Traffic prediction \sep Spatio-temporal graph neural network \sep Kernelized attention \sep Dynamic graph learning
+% \end{keyword}
+
+\begin{keyword}
+Traffic flow prediction \sep Spatio-temporal graph neural network \sep Kernelized attention \sep Dynamic graph learning
+\end{keyword}
+
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MAIN DOCUMENT CONTENT BEGINS HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Optional line numbering
+%% Start line numbering here if you want
+%% \linenumbers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SECTION 1: INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+With the rapid advancement of Intelligent Transportation Systems, accurate prediction of future traffic conditions has emerged as a critical technological imperative for urban mobility. Spatio-temporal traffic flow forecasting serves as a fundamental enabler for essential applications ranging from real-time congestion identification to intelligent traffic management. Nevertheless, the evolution of urban traffic is governed by intricate mechanisms beyond static patterns, as traffic states are heavily influenced by the real-time injection of dynamic information such as unexpected incidents. Moreover, the spatial diffusion of congestion exhibits inherent propagation delay characteristics, where upstream fluctuations transmit to downstream regions with varying time lags. Accurately forecasting these coupled dynamics requires balancing the capture of instantaneous real-time shifts with time-delayed spatial propagation, which remains a vital prerequisite for developing effective traffic management strategies.
+
+%  -- ----------------label:fig:challenge-----------------
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{./sacramento_traffic_pems.pdf}
+\captionsetup{justification=raggedright}
+\caption{Spatio-temporal heterogeneity in urban traffic networks from PeMS03 dataset. \textbf{Top:} Sensor deployment across functional zones in Sacramento, with color-coded zones: suburban residential (yellow), commercial downtown (pink), central residential (green), and campus (blue). \textbf{Bottom:} Traffic time series visualization demonstrating temporal dynamics and node-specific patterns.}
+\label{fig:challenge}
+\end{figure*}
+%  -- ----------------end-----------------
+
+% Despite significant advances in spatio-temporal traffic flow forecasting, existing methods face three fundamental challenges. First, urban traffic networks exhibit significant temporal dynamic heterogeneity. This involves a complex coupling of sudden fluctuations with periodic regularities. As shown in Fig.~\ref{fig:challenge}, distinct functional zones manifest divergent frequency profiles. Hub nodes like N112 and N161 display high-frequency dynamics characterized by sharp impulsive peaks. Conversely, residential areas such as N132 follow low-frequency and smoother diurnal patterns. Furthermore, these dynamics involve the co-existence of instantaneous outliers and robust long-term trends. For instance, weekday morning peaks exhibit rapid congestion propagation. In contrast, weekend patterns are typically characterized by stable and weaker cascading effects. However, existing methods primarily rely on fixed-scale temporal modeling or uniform attention mechanisms. Such approaches lack the adaptability to disentangle these multi-scale signatures. Consequently, they struggle to model node-specific temporal patterns distinctively. They also fail to balance the capture of instantaneous traffic shifts against overarching periodic trends. This limitation often leads to either noise-sensitive or over-smoothed predictions.
+
+Despite significant advances in spatio-temporal traffic flow forecasting, existing methods face three fundamental challenges. First, urban traffic networks exhibit pronounced temporal dynamic heterogeneity, involving a complex coupling of sudden fluctuations with periodic regularities. As shown in Fig.~\ref{fig:challenge}, distinct functional zones manifest divergent frequency profiles. Hub nodes like N112 and N161 display high-frequency dynamics with sharp impulsive peaks, whereas residential areas such as N132 follow smoother, low-frequency diurnal patterns. Furthermore, instantaneous outliers co-exist with robust long-term trends; for instance, rapid congestion propagation during weekday peaks contrasts with the stable, weaker cascading effects of weekends. However, existing methods primarily rely on fixed-scale modeling or uniform attention mechanisms, lacking the adaptability to disentangle these multi-scale signatures. As a result, they struggle to distinguish node-specific patterns or balance instantaneous shifts against periodic trends, often leading to noise-sensitive or over-smoothed predictions.
+
+
+
+Second, existing models often inadequately integrate structural priors and lack the extensibility to incorporate real-time external constraints. As evident in Fig.~\ref{fig:challenge}, urban functional zones dictate traffic patterns through long-range propagation that transcends physical topology. For instance, spatially distant nodes---such as hubs N115 and N322 or residential areas N177 and N254---display highly correlated dynamics driven by semantic proximity rather than geographical adjacency. Furthermore, traffic flows are inherently directional and susceptible to sudden events. However, prevalent approaches primarily rely on static graphs defined by spatial distance. This rigidity overlooks propagation time costs and prevents the dynamic injection of external factors during inference. Thus, these methods fail to differentiate between immediate spatial neighbors and time-delayed functional dependencies.
+
+
+Third, existing methods face severe scalability bottlenecks when modeling metropolitan-scale networks. Capturing the inherent propagation delays of traffic requires analyzing extended historical horizons. Although Transformer-based architectures excel at modeling global dependencies, their standard self-attention mechanisms incur quadratic computational complexity. This design necessitates calculating exhaustive pairwise interactions regardless of physical proximity. Therefore, computing resources are often wasted on weak connections. Crucially, this high processing burden restricts the feasible input window size. This limitation prevents the effective capture of long-range time-lagged correlations necessary for accurate long-term forecasting.
+
+To overcome these challenges, we propose the \textbf{K}ernelized \textbf{S}patio-\textbf{T}emporal \textbf{P}atch \textbf{A}ttention \textbf{N}etwork (KST-PAN). This framework offers a novel and efficient solution for scalable traffic flow prediction. It integrates two key innovations: Multi-Scale Adaptive Patch Temporal Attention (MAPTA) and Prior-Guided Kernelized Spatial Attention (PKSA). These modules efficiently capture spatio-temporal dependencies. Simultaneously, they preserve structural priors and ensure computational tractability. The principal contributions of this work are as follows:
+\begin{itemize}[nosep]
+    \item We propose a Multi-Scale Adaptive Patch Temporal Attention (MAPTA) module, which enables efficient multi-scale temporal pattern modeling. The temporal sequences are adaptively partitioned into patches of varying sizes through decomposition-based routing. A dual-attention mechanism is then employed to simultaneously capture both global correlations and local dynamics across these multi-scale patches, ultimately enabling comprehensive multi-scale temporal feature extraction for diverse traffic scenarios.
+
+    \item We design an innovative DTW-based spatio-temporal masking mechanism, which explicitly incorporates domain knowledge by integrating physical connectivity and functional-zone similarity as structural priors and semantic constraints. This mechanism guides the spatial attention process, significantly enhancing its robustness in capturing complex traffic propagation patterns.
+
+    \item We introduce a Prior-Guided Kernelized Spatial Attention (PKSA) module, which reduces computational complexity from quadratic to linear while preserving predictive accuracy. PKSA leverages Random Fourier Features to approximate the attention kernel, enabling efficient message propagation among arbitrary node pairs over flexible, layer-specific latent graphs. 
+
+    \item We address the dilution of local structural information in global operations by integrating a learnable Relational Bias mechanism. This mechanism explicitly reinforces interactions among directly connected neighbors. To our knowledge, it is the first Transformer-style module that scales all-pair message passing to large urban traffic networks.
+
+    \item We conduct extensive experiments on seven benchmark datasets, encompassing both graph-structured (PeMS03/04/07/08) and grid-based (NYCTaxi, CHIBike, T-Drive) scenarios. The results demonstrate that KST-PAN achieves state-of-the-art performance with superior computational efficiency and accuracy.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SECTION 2: RELATED WORK
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Related Work}
+Accurate traffic prediction is the cornerstone for a variety of advanced applications. It is crucial for enabling real-time dynamic traffic management \citep{khan2025smart,sun2024novel,guo2023connected}. It also optimizes lifelong multi-agent path finding \citep{chen2024traffic,zang2025online,zhang2025concurrent}. Furthermore, it enhances the safety and efficiency of autonomous driving systems by improving their trajectory planning capabilities \citep{yang2024multi,hu2022vehicle}.
+
+
+%---------------------------------------------------
+%% SUBSECTION 2.1: Graph-Convolution-Based Spatio-Temporal Models
+%---------------------------------------------------
+\subsection{Graph-Based Spatio-Temporal Models}
+Early spatio-temporal forecasting relied on Graph Convolutional Networks (GCNs). STGCN\citep{yu2018spatio} combined graph convolution with gated temporal convolutions. Similarly, DCRNN\citep{li2018dcrnn} used diffusion convolution with recurrent neural network units.
+
+However, predefined static graphs limit these methods. To address this, researchers shifted towards dynamic graph models. ASTGCN\citep{guo2019attention} and AGCRN\citep{bai2020adaptive} learn latent node associations directly from data. Recent models further refine these mechanisms. For instance, ST-DAGCN\citep{liu2024st} introduces a dual-adaptive adjacency matrix. It captures both global features and local changes using the Generalized Mahalanobis distance.
+
+To capture continuous dynamics, Graph Ordinary Differential Equations (ODEs) have emerged. MSF-GODE\citep{liu2025msf} combines multi-scale frequency sampling with Graph ODEs. It uses contrastive learning to handle data heterogeneity. ADM-STNODE\citep{chu2024adaptive} addresses the high computational cost of standard ODEs. It uses an adaptive network to determine the optimal number of ODE layers. This improves efficiency and prevents over-smoothing.
+
+Despite these advances, modeling long-distance propagation delays remains challenging. Current approaches often require complex ODE solvers or heavy matrix operations. Consequently, they still suffer from high computational costs.
+%---------------------------------------------------
+%% SUBSECTION 2.2: Attention-Based Global Dependency Models
+%---------------------------------------------------
+\subsection{Attention-Based Global Dependency Models}
+Graph-Based Network effectively capture local spatial structure. However, their receptive fields are limited to immediate neighborhoods. To address this, researchers introduced Transformer-style architectures. These models use global attention to capture interactions across distant nodes. For example, GMAN\citep{zheng2020gman} integrates spatio-temporal attention. PDFormer\citep{jiang2023pdformer} incorporates domain knowledge like propagation delays. Recent advances further enhance spatial awareness in these architectures. DSAGT\citep{li2024dynamic} achieves dynamic spatial perception. DDGformer\citep{li2024ddgformer} adds direction and distance awareness to graph Transformers. However, standard global attention often treats all temporal signals uniformly. This leads to oversmoothing and a loss of high-frequency details.
+
+To mitigate oversmoothing, researchers now use frequency-domain analysis. SDGFormer\citep{teng2026sparse} employs a frequency-decoupled attention module. It separates traffic series into low-frequency trends and high-frequency fluctuations. This preserves sensitivity to short-term events. Similarly, MSTFF\citep{chen2025urban} models traffic from multiple perspectives. It decomposes temporal features into stable trends and random fluctuations. It then applies global self-attention to these components.
+
+Despite these improvements, computational complexity remains a challenge. Standard self-attention has quadratic complexity. It calculates all pairwise interactions regardless of node distance. This high overhead restricts the input window size. Consequently, models struggle to capture extended historical horizons needed for identifying long-period propagation delays.
+
+
+
+
+%  -- ----------------label: 妯″瀷妗嗘灦鍥?---------------
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=1\textwidth]{./kst_pan_architecture.pdf}
+    \captionsetup{justification=raggedright}
+    \caption{Architecture of the KST-PAN model. (a) Overall framework illustrating input layer, the spatio-temporal encoder layer with multi-scale adaptive patch temporal attention block (MAPTA Block) and prior-guided kernelized spatial attention block (PKSA Block), gate fusion layer, and output layer. (b) PKSA Block comprising DGAT blocks for multi-hop adjacency aggregation, kernelized attention operations, and dynamic graph message passing. (c) MAPTA Block featuring multi-scale router, dual attention, and route aggregator. (d) Multi-scale routing module for selecting patch size. (e) Data tensor representations fed to the dual attention module}
+    \label{fig:architecture}
+\end{figure*}
+%  -- ----------------end-----------------
+
+%---------------------------------------------------
+%% SUBSECTION 2.3: Lightweight Spatio-Temporal Forecasting Models
+%---------------------------------------------------
+\subsection{Lightweight Spatio-Temporal Forecasting Models}
+While Transformer and its variants have significantly enhanced the modeling of long-range dependencies, their substantial computational overhead severely limits their deployment in real-world, large-scale traffic scenarios. To balance model expressiveness with practical feasibility, the research community has increasingly prioritized efficient and scalable methods. 
+
+Early methods moved beyond static topologies using techniques like Gaussian kernels\citep{kang2018unified} and learnable graph parameters\citep{franceschi2019learning}. However, many prominent approaches incur substantial computational overhead. To enhance efficiency, several alternatives have emerged. Linear models for point-wise mapping have been explored\citep{zeng2023transformers}, while patch-based approaches like PatchTST\citep{nie2022time} segment input sequences into shorter patches. This design maintains channel independence, allowing for separate modeling of temporal dependencies within each channel. However, this approach neglects inter-channel correlations, limiting its ability to capture spatial dependencies.
+
+Recently, Mamba-based architectures have been integrated into spatio-temporal networks. Models such as MGCN\citep{lin2025mgcn} and the lightweight iTransMamba\citep{cao2025itransmamba} leverage the linear complexity of Mamba-style operations. However, the primary advantage of these models lies in their temporal modeling efficiency. They still face inherent limitations in handling complex spatial dependencies. 
+
+
+\section{Notations and Definitions}
+
+\subsection{Traffic Network}
+Given the real-world traffic road network with deployed sensors that record traffic information, we formulate the traffic network as a graph $\mathcal{G} = (\mathcal{N}, E, A)$ for traffic flow prediction. Specifically, the node set $\mathcal{N} = \{1, 2, \ldots, N\}$ represents the collection of $N$ traffic sensors distributed across the network, the edge set $E$ denotes the physical connections between neighboring sensors, and $A$ is the adjacency matrix.
+
+\subsection{Problem Formulation}
+The traffic flow prediction task aims to infer future traffic states by utilizing historical traffic data. Let $x_n^t$ denote the traffic flow features of node $n$ at time step $t$, where $F$ represents the feature dimensionality. The observation data from all nodes are combined into matrix $X_t = [x_1^t, x_2^t, \ldots, x_N^t]^\top$.
+
+Given a historical observation sequence of the past $T_h$ time steps $X = \{X_1, X_2, \ldots, X_{T_h} \}$ and the traffic network graph structure $\mathcal{G}$, the objective is to learn a mapping function $\mathcal{F}$ that can predict the traffic flow for all nodes in the next $T'$ time steps as:
+\begin{equation}
+\label{eq:problem_formulation}
+\mathcal{F}: \left[ X_{t-T_h+1}, \ldots, X_t; \mathcal{G} \right] \rightarrow \left[ X_{t+1}, \ldots, X_{t+T'} \right]
+\end{equation}
+
+For convenience, the frequently used notations are summarized in Table~\ref{tab:nota_desc}.
+
+
+
+
+%---------------------------------------------------
+%% SUBSECTION: Frequently Used Notations
+%---------------------------------------------------
+% \begin{table}[!t]
+% \centering
+% \caption{Frequently used notations.}
+% \label{tab:nota_desc}
+% \footnotesize
+% \setlength{\tabcolsep}{6pt}
+% \renewcommand{\arraystretch}{1.05}
+% \begin{tabular}{@{}l l@{}}
+% \midrule
+%     \textbf{Symbol} & \textbf{Meaning} \\
+% \midrule
+% \(B, N\) & Batch size, number of nodes \\
+% \(T_h\), \(T'\) & History window length, prediction horizon \\
+% \(F\), \(D\) & Input feature dimension, embedding dimension \\
+% % \(\mathcal{G}=(\mathcal{N},E,A)\) & Traffic graph: nodes, edges, adjacency \\
+% % \(A\in\mathbb{R}^{N\times N}\) & Adjacency matrix \\
+% \(x_n^t\in\mathbb{R}^F\) & Features at node \(n\) and time \(t\) \\
+% \(X_t\in\mathbb{R}^{N\times F}\) & Features of all nodes at time \(t\) \\
+% \(X\in\mathbb{R}^{T_h\times N\times F}\) & Historical sequence over \(T_h\) \\
+% \(E_{\mathrm{te}}, E_{\mathrm{se}}\in\mathbb{R}^{T_h\times N\times D}\) & Temporal and Spatial representations \\
+% \(X_{embed}\in\mathbb{R}^{T_h\times N\times D}\) & Embedding representation\\
+
+% % \(E_{\mathrm{te}}, E_{\mathrm{te}}^{\mathrm{proj}}\) & Temporal embeddings, projected\\
+% % \(E_{\mathrm{pos}}, E_{\mathrm{te}}^{\mathrm{pos}}\) & Positional encoding, fused temporal+positional  \\
+% % \(E_{\mathrm{te}}^{\mathrm{node}}\in\mathbb{R}^{T_h\times N\times D}\) & Node-broadcast temporal embeddings \\
+% % \(E_{\mathrm{se}}\in\mathbb{R}^{N\times D}\) & Spectral spatial embeddings \\
+% % \(E_{\mathrm{se}}^{\mathrm{node}}\in\mathbb{R}^{T_h\times N\times D}\) & Node-broadcast spatial embeddings \\
+% $H_{\text{spat}}^{(l)}, H_{\text{time}}^{(l)} \in \mathbb{R}^{T_h \times N \times D}$ & Encoder layer-$l$ spatial and temporal features \\
+% $H^{(l)} \in \mathbb{R}^{T_h \times N \times D}$ & Encoder layer-$l$ output features \\
+% \( Z_n\in\mathbb{R}^{T_h\times D} \) & Per-node time series\\
+% \( Z_t\in\mathbb{R}^{N\times D} \) & Per-time slice features \\
+% \(P_i, N_{p_i}\) & Patch size, patch count at scale \(i\) \\
+% \(d_t, d_s, d_{s'}\) & Encoder temporal, spatial, kernel dims \\
+% \(R(\tilde{Z}_n), \bar{R}(\tilde{Z}_n)\) & Routing weights, sparse Top-\(\mathcal{K}_{\text{route}}\) weights \\
+% \(\mathcal{K}_{\text{route}}\) & Number of selected routing scales \\
+% \(M^{\Theta}\in\mathbb{R}^{N\times N}\) & DTW-guided spatio-temporal mask \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+% ----------------
+
+
+\begin{table}[!t]
+\centering
+\caption{Frequently used notations.}
+\label{tab:nota_desc}
+\footnotesize
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}l l@{}}
+\toprule
+    \textbf{Symbol} & \textbf{Meaning} \\
+\midrule
+$B, N$ & Batch size, number of nodes \\
+$T_h, T'$ & History window length, prediction horizon \\
+$F, D$ & Input feature dimension, embedding dimension \\
+$x_n^t \in \mathbb{R}^F$ & Input features at node $n$ and time $t$ \\
+$X_t \in \mathbb{R}^{N \times F}$ & Input features of all nodes at time $t$ \\
+$X \in \mathbb{R}^{T_h \times N \times F}$ & Historical input sequence over $T_h$ \\
+$E_{\text{te}}, E_{\text{se}} \in \mathbb{R}^{T_h \times N \times D}$ & Temporal and Spatial representations \\
+$X_{embed} \in \mathbb{R}^{T_h \times N \times D}$ & Final unified data embedding \\ % Corrected from X_emb
+$H_{\text{time}}^{(l)}, H_{\text{spat}}^{(l)}$ & Encoder layer-$l$ temporal/spatial features \\
+$H^{(l)} \in \mathbb{R}^{T_h \times N \times D}$ & Encoder layer-$l$ output features \\
+$Z_n \in \mathbb{R}^{T_h \times D}$ & Per-node latent time series \\
+$Z_t \in \mathbb{R}^{N \times D}$ & Per-time slice latent features \\ % Clarified as latent
+$P_i, N_{p_i}$ & Patch size, patch count at scale $i$ \\
+$d_t, d_s, d_{s'}$ & Encoder temporal, spatial, kernel dims \\
+$R(\tilde{Z}_n), \bar{R}(\tilde{Z}_n)$ & Routing weights, sparse Top-$\mathcal{K}_{\text{route}}$ weights \\
+$\mathcal{K}_{\text{route}}$ & Number of selected routing scales \\
+$M^{\Theta} \in \mathbb{R}^{N \times N}$ & DTW-guided spatio-temporal mask \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SECTION 3: METHODOLOGY - KST-PAN ARCHITECTURE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methodology}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SUBSECTION 3.1: PROBLEM DEFINITION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This section provides a comprehensive overview of the proposed \textbf{K}ernelized \textbf{S}patio-\textbf{T}emporal \textbf{P}atch \textbf{A}ttention \textbf{N}etwork (KST-PAN) framework, as shown in Fig.~\ref{fig:architecture}. The detailed implementation of each module is described in the subsequent sections. 
+
+% The framework incorporates two innovative components: the Multi-Scale Adaptive Patch Temporal Attention (MAPTA) block and the Prior-Guided Kernelized Spatial Attention (PKSA) block. The MAPTA block accurately models temporal multi-scale dependencies through adaptive patch size selection and dual-attention mechanisms, while the PKSA block efficiently captures dynamic spatial associations via kernelized attention operations. These components jointly achieve efficient spatio-temporal modeling. The subsequent sections provide comprehensive explanations of each key module.
+
+%---------------------------------------------------
+%% SUBSECTION 3.3: Data Embedding Layer
+%---------------------------------------------------
+% Data embedding layer
+\subsection{Data Embedding Layer}
+For capturing complex spatio-temporal dependencies, the Data Embedding Layer integrates intrinsic traffic features with explicit temporal semantics and static graph structures, transforming the raw sequence $X$ into a unified high-dimensional representation $X_{\mathrm{embed}}$.
+
+To explicitly capture the inherent periodicity and semantic dependencies of traffic flows, we design a temporal embedding module. 
+Specifically, we extract three distinct temporal attributes from the input sequence: the day-of-week index $\mathbf{w} \in \{0, 1, \ldots, 6\}^{T_h}$, the time-of-day index $\mathbf{d} \in \{0, 1, \ldots, 1439\}^{T_h}$, and the holiday indicator $\mathbf{h} \in \{0, 1\}^{T_h}$. 
+These discrete variables are mapped into dense continuous vectors via learnable embedding layers, denoted as $E_{w}$, $E_{d}$, and $E_{h}$, respectively. 
+Subsequently, these embeddings are concatenated to fuse multi-scale temporal semantics and are projected into the embedding dimension $D$ via a linear transformation:
+\vspace{-3pt}
+\begin{equation}
+    E_{\mathrm{period}} = \mathrm{Linear}(E_{w} \mathbin{\|} E_{d} \mathbin{\|} E_{h}) \in \mathbb{R}^{T_h \times D},
+    \label{eq:temporal_proj}
+\end{equation}
+\vspace{-3pt}
+where $\mathbin{\|}$ represents the concatenation operation along the feature dimension, and $\mathrm{Linear}(\cdot)$ denotes a learnable linear projection layer.
+
+
+% \subsubsection{Temporal Embedding Module}
+% The temporal embedding module captures traffic flow periodicity by processing all time steps with explicit semantic encoding. It extracts week indices \(\mathbf{w} \in \{0, 1, \ldots, 6\}^{T_h}\), minute-level timestamps \(\mathbf{d} \in \{0, \ldots, 1439\}^{T_h}\), and holiday indicators \(\mathbf{h} \in \{0, 1\}^{T_h}\) from the original data \(X\). These attributes are embedded via lookup tables into periodic embedding \(E_{w} \in \mathbb{R}^{T_h \times F_{\mathrm{week}}}\), time-of-day embedding \(E_{d} \in \mathbb{R}^{T_h \times F_{\mathrm{time}}}\), and holiday embedding \(E_{h} \in \mathbb{R}^{T_h \times F_{\mathrm{holiday}}}\), with \(F_{\mathrm{week}}\), \(F_{\mathrm{time}}\), and \(F_{\mathrm{holiday}}\) representing the respective embedding dimensions. The embeddings are concatenated to form comprehensive temporal features and then mapped to the embedding dimension by a projection layer:
+
+% \begin{equation}
+%     E_{\mathrm{te}} = E_{w} \Vert E_{d} \Vert E_{h} \in \mathbb{R}^{T_h \times (F_{\mathrm{week}} + F_{\mathrm{time}} + F_{\mathrm{holiday}})}
+%     \label{eq:temporal_concat}
+% \end{equation}
+
+% \begin{equation}
+%     E_{\mathrm{te}}^{\mathrm{proj}} = E_{\mathrm{te}} W_{\mathrm{te}}^\top + b_{\mathrm{te}} \in \mathbb{R}^{T_h \times D}
+%     \label{eq:temporal_projection}
+% \end{equation}
+
+% where \(W_{\mathrm{te}} \in \mathbb{R}^{D \times (F_{\mathrm{week}} + F_{\mathrm{time}} + F_{\mathrm{holiday}})}\) is a learnable parameter matrix, \(b_{\mathrm{te}} \in \mathbb{R}^{D}\) is the bias vector, and \(\Vert\) denotes concatenation operation. 
+
+To further enhance the modeling capacity of the sequential order information in the model, our model incorporates the classical sine-cosine positional encoding method\citep{vaswani2017attention}. For each time step \(t\) and each dimension \(d\), the positional encoding vector \( E_{\mathrm{pos}} \in \mathbb{R}^{D} \) is computed according to the following rule:
+\vspace{-3pt}
+\begin{equation}
+E_{\mathrm{pos}}(t, d) = 
+\begin{cases} 
+\sin(t / 10000^{2d/D}), & \text{if } d \text{ even} \\
+\cos(t / 10000^{2(d-1)/D}), & \text{if } d \text{ odd}
+\end{cases}
+\label{eq:sin_cos}
+\end{equation}
+\vspace{-3pt}
+
+The final temporal embedding is obtained by fusing the periodic temporal features $E_{\mathrm{period}}$ with the positional encoding and broadcasting the result to all nodes:
+\vspace{-3pt}
+\begin{equation}
+E_{\mathrm{te}}
+= \left( E_{\mathrm{period}} + E_{\mathrm{pos}} \right) \otimes \mathbf{1}_N,
+\label{eq:temporal_broadcast}
+\end{equation}
+\vspace{-3pt}
+where $\mathbf{1}_N \in \mathbb{R}^{N}$ is an all-one vector, and $\otimes$ denotes feature replication along the node dimension.
+
+% \subsubsection{Spatial Embedding Module}
+%  -----------origion--------------
+% Complementary to the temporal embedding that captures sequential patterns, the spatial embedding module encodes the topological structure and frequency domain characteristics of the traffic network $\mathcal{G}$ through spectral decomposition of the graph Laplacian matrix. In the adjacency matrix $A$, each element $A_{uv}$ indicates connectivity ($u,v \in \mathcal{N}$), where $A_{uv}=1$ for connected nodes and $A_{uv}=0$ otherwise. Since our model focuses on networks without self-loops, we set $A_{uu}=0$ for all nodes. Based on the adjacency matrix, the degree matrix $\mathcal{D}_g\in \mathbb{R}^{N\times N}$ is constructed, where $\mathcal{D}_{uu}=\sum_{v=1}^{N}A_{uv}$ represents the degree of node $u$. The symmetric normalized graph Laplacian matrix is correspondingly constructed as
+% $L_{sym}=I-{\mathcal{D}_g}^{-1/2}A{\mathcal{D}_g}^{-1/2}$, where $I\in \mathbb{R}^{N\times N}$ denotes the identity matrix. Since $L_{sym}$ is a symmetric positive semidefinite matrix, its eigenvalues reflect the structural properties of the graph. To further extract frequency domain feature information from the graph, spectral decomposition of $L_{sym}$ yields
+% $L_{sym}=\mathrm{\Phi}\mathrm{\Lambda}\mathrm{\Phi}^\top$, where $\mathrm{\Lambda}$ is the diagonal eigenvalue matrix, $\mathrm{\Phi}\in \mathbb{R}^{N\times N}$ is the eigenvector matrix, and the superscript $\top$ denotes transpose.
+% -------------------------------------
+Complementary to the temporal embedding, the spatial embedding module captures the topological structure and frequency characteristics of the traffic network $\mathcal{G}$ through spectral analysis of the graph Laplacian. Given the adjacency matrix $A$, each entry $A_{uv}$ ($u,v\in\mathcal{N}$) indicates whether an edge exists between nodes $u$ and $v$, with $A_{uv}=1$ for connected node pairs and $A_{uv}=0$ otherwise. As the network contains no self-loops, we set $A_{uu}=0$ for all $u$. The degree matrix $\mathcal{D}_g\in\mathbb{R}^{N\times N}$ is defined by $\mathcal{D}_{uu}=\sum_{v=1}^{N}A_{uv}$. Using $A$ and $\mathcal{D}_g$, the symmetric normalized Laplacian is constructed as $L_{\mathrm{sym}} = I - \mathcal{D}_g^{-1/2} A \mathcal{D}_g^{-1/2}$, where $I$ denotes the identity matrix. As a symmetric positive semidefinite matrix, $L_{\mathrm{sym}}$ admits the eigendecomposition $L_{\mathrm{sym}} = \Phi \Lambda \Phi^\top$, where $\Lambda$ contains the eigenvalues and $\Phi \in \mathbb{R}^{N\times N}$ contains the corresponding eigenvectors.
+
+
+Building upon the foundational work that pioneered graph Laplacian networks\citep{bruna2013spectral}, we construct spectral embeddings from the non-trivial eigenvectors of the normalized Laplacian. Let $[\,\Phi_2 \,\|\, \Phi_3 \,\|\, \ldots \,\|\, \Phi_{d_{\mathrm{se}}+1}\,] \in \mathbb{R}^{N \times d_{\mathrm{se}}}$ denote the first $d_{\mathrm{se}}$ informative eigenvectors. After a linear projection into the model dimension, the spatial embedding is broadcast across all time steps:
+\vspace{-3pt}
+\begin{equation}
+E_{\mathrm{se}}
+= \mathbf{1}_{T_h} \otimes 
+\Bigl( [\,\Phi_2 \,\|\, \Phi_3 \,\|\, \ldots \,\|\, \Phi_{d_{\mathrm{se}}+1}\,] W_{\mathrm{se}} \Bigr)
+\end{equation}
+\vspace{-3pt}
+where $\mathbf{1}_{T_h}$ denotes a length-$T_h$ all-ones vector.
+
+Fusing the temporal and spatial representations through element-wise addition, we obtain the unified data embedding \(X_{\text{embed}} = E_{\mathrm{te}} + E_{\mathrm{se}}\).
+
+
+%---------------------------------------------------
+%% SUBSECTION 3.4: Multi-Scale Adaptive Patch Temporal Attention
+%---------------------------------------------------
+\subsection{Multi-Scale Adaptive Patch Temporal Attention}
+Standard temporal modeling in traffic forecasting often assumes synchronous correlations, thereby failing to capture the asynchronous propagation delays where upstream fluctuations influence downstream regions with variable time lags. To effectively align these time-delayed dependencies, we propose the Multi-Scale Adaptive Patch Temporal Attention (MAPTA) module, as shown in Fig.~\ref{fig:architecture}(c). 
+
+Point-wise attention mechanisms often struggle with long-range time lags. In contrast MAPTA segments time series into semantic patches. By adaptively selecting patch sizes, the model encompasses varying delay durations within a single token. Therefore it effectively bridges the temporal gap caused by traffic propagation. The module functions within the $l^{th}$ spatio-temporal encoder layer. It processes the output features $H^{(l-1)}$ from the preceding layer. For the initial layer, the input is defined as $H^{(0)} = X_{\text{embed}}$.
+
+
+\subsubsection{Multi-Scale Adaptive Routing}
+
+To disentangle the heterogeneous dynamics discussed above, we introduce the Multi-Scale Adaptive Routing mechanism, as illustrated in Fig.~\ref{fig:architecture}(d). This mechanism adaptively determines optimal temporal patch scales. It relies on the intrinsic frequency components of the traffic signal rather than pre-defined windows. Furthermore, we employ a temporal decomposition unit to extract node-specific dynamic components. Consequently, delays in both seasonal and trend patterns are modeled at their appropriate granularities.
+
+For each node $n$, taking the time-series slice $Z_n = H_n^{(l-1)}$ as input. We first aim to isolate the predictable periodic delays inherent in recurrent traffic patterns. To this end, the seasonal component $Z_{n,\mathrm{sea}}$ is extracted via discrete Fourier transform (DFT)\citep{cooley1965algorithm} and inverse transform (IDFT) using the top-$K_f$ frequency components:
+\vspace{-3pt}
+\begin{equation}
+    \label{eq:seasonal_component}
+    Z_{n, \text{sea}} = \text{IDFT}(\text{TopK}_{\text{freq}}(\text{DFT}(Z_n)))
+\end{equation}
+\vspace{-3pt}
+
+Subsequently, the model targets the trend component $Z_{n, \text{trend}}$, which encapsulates slow-evolving propagation patterns characterized by long-term time lags. To capture these underlying dynamics, we process the residual term $Z_{n, \text{rem}} = Z_n - Z_{n, \text{sea}}$ using a multi-scale moving average mechanism. Rather than relying on a fixed window, we employ learnable weights to adaptively aggregate pooling results across diverse kernel sizes. The weighting and aggregation processes are formulated as:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:trend_weights}
+[\alpha_1, \alpha_2, \ldots, \alpha_{N_k}] = \text{Softmax}(W_{\text{trend}} Z_{n, \text{rem}} + b_{\text{trend}})
+\end{equation}
+\vspace{-3pt}
+\vspace{-10pt}
+\begin{equation}
+\label{eq:trend_component}
+Z_{n, \text{trend}} = \sum_{i=1}^{N_k} \alpha_i \cdot \text{AvgPool}_{k_i}(Z_{n, \text{rem}})
+\end{equation}
+\vspace{-3pt}
+where $W_{\text{trend}}$ and $b_{\text{trend}}$ are learnable parameters. $N_k$ denotes the number of pooling kernels. $\text{AvgPool}_{k_i}(\cdot)$ represents average pooling with kernel size $k_i$.
+
+With the dynamic components extracted, the routing module proceeds to evaluate these patterns to select the optimal patch resolution. Therefore, we first aggregate the decomposed features. We concatenate the original input $Z_n$, seasonal component $Z_{n, \text{sea}}$, and trend component $Z_{n, \text{trend}}$. A linear transformation then fuses these features:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:feature_aggregation}
+    \tilde{Z}_{n} = \text{Linear}([Z_n \parallel Z_{n, \text{sea}} \parallel Z_{n, \text{trend}}])
+\end{equation}
+\vspace{-3pt}
+
+Leveraging this unified representation, the model dynamically determines the optimal patch granularity to align with the intrinsic time-lag durations of traffic signals. This selection process is governed by a noisy gating mechanism, which computes the routing weights for candidate patch sizes as:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:routing_weights}
+    R(\tilde{Z}_{n}) =  \text{Softmax}(\tilde{Z}_{n}W_r + \xi_{\text{gate}} \cdot \text{Softplus}(\tilde{Z}_{n}W_{\text{noise}}))
+\end{equation}
+\vspace{-3pt}
+where $W_r, W_{\text{noise}}$ are learnable parameters. $\xi_{\text{gate}} \sim \mathcal{N}(0, 1)$ denotes Gaussian noise injected into the gating mechanism.
+
+Finally, we filter the computed weights $R(\tilde{Z}_{n})$ from the candidate set $K_{\text{total}}=\{1,2,\ldots,T_h\}$. The model applies Top-$\mathcal{K}_{\text{route}}$ selection to identify the most relevant scales. Consequently, this yields sparse routing weights $\bar{R}(\tilde{Z}_{n}) \in \mathbb{R}^{\mathcal{K}_{\text{route}}}$ and the optimal sparse patch set $\mathcal{P} = \{P_1, P_2, \ldots, P_{\mathcal{K}_{\text{route}}}\}$.
+
+
+\subsubsection{Multi-Scale Dual Patch Attention}
+
+% %  -- ----------------label:fig:time-attention-----------------
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.48\textwidth]{./hybrid_patch_att.pdf} 
+    \caption{Patch-based temporal dual attention mechanism}
+    \label{fig:time-attention}
+\end{figure}
+% %  -- ----------------end-----------------
+
+To effectively capture the heterogeneous temporal structure of traffic data, we employ a dual-attention mechanism consisting of local and global patch attention, as shown in Fig.~\ref{fig:time-attention}. Dual attention explicitly disentangles these regimes and allows the model to learn both temporal granularities at each scale.
+
+With the patch size set $\mathcal{P}$ determined by the adaptive routing module, we decompose the time series $Z_n$ of each node into patches. Specifically, for each scale $i$ defined by a patch size $P_i$, the time series is partitioned into $N_{p_i} = \lceil T_h/P_i \rceil$ non-overlapping patches, denoted as $\{Z_n^{(i,j)}\}_{j=1}^{N_{p_i}}$, where each patch $Z_n^{(i,j)} \in \mathbb{R}^{P_i \times D}$.
+
+Local-patch attention focuses on capturing short-term traffic congestion and fluctuations within individual patches. For each patch $Z_n^{(i,j)} \in \mathbb{R}^{P_i \times D}$, we obtain key and value representations through linear transformations:
+
+\begin{equation}
+\label{eq:local_kv}
+K_{\text{local}}^{(i,j)} = Z_n^{(i,j)} W_K^{\text{local}}, \quad V_{\text{local}}^{(i,j)} = Z_n^{(i,j)} W_V^{\text{local}}
+\end{equation}
+where $W_K^{\text{local}}, W_V^{\text{local}} \in \mathbb{R}^{D \times d_t}$ are learnable parameter matrices, and $d_t$ is the temporal feature dimension. Subsequently, we introduce a learnable query matrix $Q_{\text{local}}^{(i,j)} \in \mathbb{R}^{1 \times d_t}$ to aggregate local contextual information within the patch through cross-attention:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:local_attention}
+    \text{Attn}_{\text{local}}^{(i,j)} = \text{Softmax}\left(\frac{Q_{\text{local}}^{(i,j)} (K_{\text{local}}^{(i,j)})^\top}{\sqrt{d_t}}\right) V_{\text{local}}^{(i,j)} \in \mathbb{R}^{1 \times d_t}
+\end{equation}
+\vspace{-3pt}
+By concatenating results from all $N_{p_i}$ patches, we obtain the local patch attention output:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:local_concat}
+    \text{Attn}_{\text{local}}^{(i)} = [\text{Attn}_{\text{local}}^{(i,1)}; \text{Attn}_{\text{local}}^{(i,2)}; \dots; \text{Attn}_{\text{local}}^{(i,N_{p_i})}] \in \mathbb{R}^{N_{p_i} \times d_t}
+\end{equation}
+\vspace{-3pt}
+
+Global-patch attention aims to capture long-range dependencies between different patch sequences. Each patch $Z_n^{(i,j)}$ is flattened into a single vector $\bar{Z}_n^{(i,j)} \in \mathbb{R}^{P_i \cdot D}$. Stacking all flattened patch vectors yields the sequence $\bar{Z}_n^{(i)} = [\bar{Z}_n^{(i,1)}; \bar{Z}_n^{(i,2)}; \dots; \bar{Z}_n^{(i,N_{p_i})}] \in \mathbb{R}^{N_{p_i} \times (P_i \cdot D)}$, over which we perform standard self-attention:
+\vspace{-4pt}
+\begin{equation}
+\label{eq:global_attention}
+    \text{Attn}_{\text{global}}^{(i)} = \text{Softmax}\left(\frac{Q_{\text{global}}^{(i)} (K_{\text{global}}^{(i)})^\top}{\sqrt{d_t}}\right) V_{\text{global}}^{(i)} \in \mathbb{R}^{N_{p_i} \times d_t}
+\end{equation}
+
+where $Q_{\text{global}}^{(i)} = \bar{Z}_n^{(i)} W_Q^{(\text{global},i)}$, $K_{\text{global}}^{(i)} = \bar{Z}_n^{(i)} W_K^{(\text{global},i)}$, $V_{\text{global}}^{(i)} = \bar{Z}_n^{(i)} W_V^{(\text{global},i)}$, and the learnable weights $W_Q^{(\text{global},i)}$, $W_K^{(\text{global},i)}$, $W_V^{(\text{global},i)} \in \mathbb{R}^{(P_i \cdot D) \times d_t}$ are specific to the patch size.
+
+To effectively integrate local fine-grained patterns and global long-range dependencies within the same scale, we combine the outputs of both attention modules through element-wise addition and then projected through a linear layer as:
+\vspace{-3pt}
+\begin{equation} 
+\label{eq:fused_attn}
+    \text{Attn}^{(i)}_{\mathrm{fused}}
+    = \mathrm{Proj}\!\left(
+        \text{Attn}^{(i)}_{\mathrm{local}}
+        +
+        \text{Attn}^{(i)}_{\mathrm{global}}
+    \right)
+    \in \mathbb{R}^{N_{p_i} \times D}
+\end{equation}
+\vspace{-5pt}
+
+\subsubsection{Multi-Scale Aggregation and Reconstruction}
+After the dual-attention mechanism processes the patched time series, the resulting multi-scale representations must be aggregated and restored to the original temporal dimension $T_h$. This is achieved through a weighted combination of upsampled features from each selected patch scale.
+
+Specifically, for each scale $i$ in the selected set $\mathcal{P}$, the fused attention output $\text{Attn}^{(i)}_{\text{fused},n}$ is upsampled using a scale-specific 1D transposed convolutional layer, denoted as $\mathcal{T}_i(\cdot)$. This layer, which has its own learnable parameters for each scale, treats the input as a sequence of length $N_{p_i}$ with $D$ channels. To perform the upsampling, the layer is configured with both its \texttt{kernel\_size} and \texttt{stride} equal to the patch size $P_i$, while keeping the number of input and output channels at $D$. This operation expands the sequence length from $N_{p_i}$ to $\left\lceil T_h/P_i \right\rceil  \times P_i$. The resulting sequence is then truncated to the original length $T_h$ to produce an upsampled representation of shape $\mathbb{R}^{T_h \times D}$.
+
+
+The final temporal representation for node $n$ is then constructed by aggregating the upsampled features from all $\mathcal{K}_{\mathrm{route}}$ selected scales. This aggregation is weighted by the sparse routing weights $\bar{R}(\tilde{Z}_{n})$ computed in Eq.~\eqref{eq:routing_weights}, ensuring that only the most relevant temporal patterns contribute to the final output:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:final_temporal_output}
+    H^{(l)}_{\mathrm{time},n}
+    =
+    \sum_{i=1}^{\mathcal{K}_{\mathrm{route}}}
+    \bar{R}(\tilde{Z}_{n})_i \cdot
+    \mathcal{T}_i\!\left(
+        \text{Attn}^{(i)}_{\mathrm{fused},n}
+    \right)
+\end{equation}
+Aggregating the representations for all nodes yields the final temporal feature matrix $H_{\text{time}}^{(l)} \in \mathbb{R}^{T_h \times N \times D}$, which serves as the output of the MAPTA module.
+
+\subsection{Prior-Guided Kernelized Spatial Attention}
+
+Within the spatial-temporal encoder layer, the Prior-Guided Kernelized Spatial Attention (PKSA) module captures spatial correlations. As illustrated in Fig.~\ref{fig:architecture}(b), this component is structurally composed of stacked Dynamic Graph Attention (DGAT) blocks, designed to facilitate efficient multi-hop message passing.
+
+Within the DGAT framework, node representations are progressively refined over $R$ iterative rounds. At each time step $t$, the per-time slice features are formalized as $Z_t^{(l, r)} = \{z_{t,u}^{(l, r)}\}_{u \in \mathcal{N}} \in \mathbb{R}^{N \times D}$, where $z_{t,u}^{(l, r)} \in \mathbb{R}^D$ represents the feature vector of node $u$ following the $r$-th aggregation round. To establish spatial attention relationships, we introduce learnable matrices $W_Q^{(S)}, W_K^{(S)}, W_V^{(S)} \in \mathbb{R}^{D \times d_s}$ to project node features into query, key, and value vectors, denoted as $q_u^{(S)}$, $k_v^{(S)}$, and $v_v^{(S)}$, respectively. Subsequently, the updated feature $z_{t,u}^{(l, r+1)}$ is computed by aggregating value vectors weighted by dynamic attention coefficients $\tilde{a}_{uv}^{(l, r)}$. The projection and aggregation processes are formulated as follows:
+\begin{flalign}
+\label{eq:qkv_vectors}
+& q_u^{(S)} = z_{t,u}^{(l, r)} W_Q^{(S)},\quad k_v^{(S)} = z_{t,v}^{(l, r)} W_K^{(S)},\quad v_v^{(S)} = z_{t,v}^{(l, r)} W_V^{(S)}, \\
+\label{eq:attention_update}
+& z_{t,u}^{(l, r+1)} = \sum_{v=1}^{N} \tilde{a}_{uv}^{(l, r)} v_v^{(\mathrm{S})}.
+\end{flalign}
+
+% -----鍘熷鐨刟 standard-----------
+% \subsubsection{Attention Acceleration via Kernelization}
+
+% Efficient computation of the attention coefficients $\tilde{a}_{uv}^{(l, r)}$ in Eq.\eqref{eq:attention_update} represents one of the core challenges in modeling large-scale traffic networks. In standard self-attention implementations, these coefficients are typically computed based on dot products between query and key vectors, followed by softmax normalization:
+% \vspace{-3pt}
+% \begin{equation}
+% \tilde{a}_{uv}^{\text{standard}} = \frac{\exp\left((q_u^{(S)})^\top k_v^{(S)}/\sqrt{d_s}\right)}{\sum_{\tau=1}^{N}\exp\left((q_u^{(S)})^\top k_\tau^{(S)}/\sqrt{d_s}\right)}
+% \label{eq:atten_standard}
+% \end{equation}
+% \vspace{-3pt}
+% Here, $\tau$ traverses all nodes to ensure the normalization of the probability distribution, and $d_s$ is the embedding dimension of the spatial attention. 
+% -----end-----------
+
+\subsubsection{Attention Acceleration via Kernelization}
+Efficient computation of the attention coefficients $\tilde{a}_{uv}^{(l, r)}$ in Eq.\eqref{eq:attention_update} represents one of the core challenges in modeling large-scale traffic networks. In standard self-attention implementations, these coefficients are typically computed based on pairwise dot products between query and key vectors, incurring a quadratic complexity which limits scalability.
+
+To circumvent computational bottleneck, we build upon the established paradigm of linear-time attention pioneered by seminal works~\citep{katharopoulos2020transformers, choromanski2021rethinking}. Specifically, we utilize a positive definite radial basis function (RBF) kernel defined as $\kappa(q_u^{(S)}, k_v^{(S)}) = \exp(-\gamma \|q_u^{(S)} - k_v^{(S)}\|^2) \approx \phi(q_u^{(S)})^\top \phi(k_v^{(S)})$. The kernel is approximated using a low-dimensional feature map $\phi(\cdot):\mathbb{R}^{d_s} \to \mathbb{R}^{d_{s'}}$, where $d_{s'}$ is the kernel feature space dimension. Among various kernelization methods, we adopt Random Fourier Features (RFF)\citep{rahimi2007random} for its simplicity and lower memory overhead compared to alternatives like Nystr\"om approximation\citep{williams2001nystrom} or sparse random features\citep{yu2016orthogonal}. The workflow of the RFF kernelized attention mechanism is shown in Fig.~\ref{fig:rff_kernel_trick}.
+
+Taking the query vector $q_u^{(S)}$ as an example, its corresponding mapping is formally defined as:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:kernel_mapping}
+\phi(q_u^{(S)}) = \sqrt{\frac{2}{d_{s'}}} \begin{bmatrix}
+\cos(\mathbf{\omega}_1^\top q_u^{(S)} + b_1) \\
+\sin(\mathbf{\omega}_1^\top q_u^{(S)} + b_1) \\
+\vdots \\
+\cos(\mathbf{\omega}_{d_{s'}/2}^\top q_u^{(S)} + b_{d_{s'}/2}) \\
+\sin(\mathbf{\omega}_{d_{s'}/2}^\top q_u^{(S)} + b_{d_{s'}/2})
+\end{bmatrix}
+\end{equation}
+\vspace{-3pt}
+where $\mathbf{\omega}_i \in \mathbb{R}^{d_s}$ are weight vectors randomly sampled from the Gaussian distribution $\mathcal{N}(0,2I_{d_s})$ (with $I_{d_s} \in \mathbb{R}^{d_s \times d_s}$ being the identity matrix), and $b_i \in [0, 2\pi]$ are uniformly sampled phase parameters.
+
+By leveraging the associative property of matrix multiplication, the standard attention operation can be reformulated. Specifically, the generic linearized node update (without structural masking) can be expressed as:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:linear_attention_general}
+\hat{z}_{t,u}^{(l, r+1)} = \frac{\phi(q_u^{(S)})^\top \sum_{v=1}^{N} \left( \phi(k_v^{(S)}) (v_v^{(S)})^\top \right)}{\phi(q_u^{(S)})^\top \sum_{\tau=1}^{N} \phi(k_\tau^{(S)})}
+\end{equation}
+\vspace{-3pt}
+Here, the index $\tau$ traverses all nodes to ensure global normalization. By decoupling the query from the summation over keys and values, the global context terms $\sum_{v} \phi(k_v^{(S)}) (v_v^{(S)})^\top$ and $\sum_{\tau} \phi(k_\tau^{(S)})$ can be computed once and subsequently reused for all queries. In the following section, we refine this formulation to incorporate structural constraints.
+
+
+
+
+%  -- ----------------label:fig:rff_kernel_trick-----------------
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.4\textwidth]{./rff_kernel.pdf} 
+    \caption{Illustration of the RFF-based kernelized spatial attention mechanism.}
+\label{fig:rff_kernel_trick}
+\end{figure}
+%  -- ----------------end-----------------
+
+
+
+\subsubsection{DTW-Guided Structural Masking Mechanism}
+
+To capture the intrinsic temporal evolution patterns across the transportation network, we incorporate a similarity-guided masking mechanism based on Dynamic Time Warping (DTW).
+
+We quantify the temporal discrepancy $\Theta(X_u, X_v)$ by computing the optimal alignment path between the historical feature sequences of nodes $u$ and $v$. Following the standard dynamic programming approach, we construct a cumulative cost matrix $\mathcal{C} \in \mathbb{R}^{T_h \times T_h}$. Formally, for any two time steps $i, j \in \{1, \dots, T_h\}$, the element $\mathcal{C}_{i,j}$ is computed recursively as:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:dtw_recursive}
+\mathcal{C}_{i,j} = \|x_u^i - x_v^j\|_2 + \min \left\{ \mathcal{C}_{i-1, j}, \mathcal{C}_{i, j-1}, \mathcal{C}_{i-1, j-1} \right\}
+\end{equation}
+\vspace{-3pt}
+where $\| \cdot \|_2$ denotes the Euclidean norm, and $\mathcal{C}_{0,0}=0$ while other boundary indices are initialized to $\infty$. The final temporal similarity distance is given by the terminal cumulative cost $\Theta(X_u, X_v) = \mathcal{C}_{T_h, T_h}$.
+
+To capture inherent spatial constraints, we construct the physical adjacency matrix $A^{\text{phys}}$ using a thresholded Gaussian kernel based on input of the geographical distance $\text{dist}(u, v)$ between sensors:
+\begin{equation}
+A_{uv}^{\text{phys}} = 
+\begin{cases} 
+\exp\left(-\frac{\text{dist}(u, v)^2}{\sigma_d^2}\right), & \text{if } \text{dist}(u, v) \leq d_{\text{cut}} \\ 
+0, & \text{otherwise} 
+\end{cases}
+\end{equation}
+% where $dist(u, v)$ is the Haversine distance derived from the longitudinal and latitudinal coordinates of the sensors. 
+where $\sigma_d$ denotes the empirical standard deviation of the distances, and $d_{\text{cut}}$ is a predefined distance cutoff that controls the sparsity level of the physical topology.
+
+Furthermore, to model fine-grained local semantic correlations driven by urban functional roles, we construct an external constraint matrix $A^{\text{ext}}$. This is achieved by first deriving a representative daily traffic profile $\mathcal{S}_u$ for each node, then grouping nodes with similar profiles using $K$-means clustering. The semantic association $A_{uv}^{\text{ext}}$ is then computed via a cluster-aware cosine similarity:
+\begin{equation}
+A_{uv}^{\text{ext}} = 
+  \begin{cases} 
+  \frac{\mathcal{S}_u \cdot \mathcal{S}_v}{\|\mathcal{S}_u\| \|\mathcal{S}_v\|}, & \text{if } \text{cluster}(u) = \text{cluster}(v) \\ 
+  \epsilon_{\text{clu}} \cdot \frac{\mathcal{S}_u \cdot \mathcal{S}_v}{\|\mathcal{S}_u\| \|\mathcal{S}_v\|}, & \text{otherwise} 
+  \end{cases}
+\end{equation}
+where $\epsilon_{\text{clu}} \in [0, 1)$ is a fixed decay factor for inter-cluster connections.
+%  This ensures that the spatial attention is strictly guided by both spatial proximity and functional homophily.
+
+
+Building on the physical adjacency $A^{\text{phys}}$ and the external constraint matrix $A^{\text{ext}}$ introduced above, we fuse these static priors with the dynamic DTW alignment cost to obtain the final spatio-temporal mask matrix:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:spatiotemporal_mask}
+M_{uv}^{\Theta} =  A_{uv}^{\text{phys}} \odot A_{uv}^{\text{ext}}  \cdot \exp\left(-\frac{\Theta(X_u, X_v)^2}{\delta^2}\right) 
+\end{equation}
+\vspace{-3pt}
+where $\odot$ denotes element-wise multiplication, and $\delta$ is a data-driven normalization constant that rescales the DTW distances.
+
+Finally, we inject this structural prior into the linearized framework. Replacing the fully connected aggregation in Eq.~\eqref{eq:linear_attention_general} with the masked aggregation over the valid sparse neighborhood $\mathcal{N}(u) = \{v \mid A^{\text{phys}}_{uv} \odot A^{\text{ext}}_{uv} > 0\}$, the final node representation is updated as:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:prior_guided_linear_attention}
+z_{t,u}^{(l, r+1)} = \frac{\phi(q_u^{(S)})^\top \sum_{v \in \mathcal{N}(u)} \left( M_{uv}^{\Theta} \cdot \phi(k_v^{(S)}) (v_v^{(S)})^\top \right)}{\phi(q_u^{(S)})^\top \sum_{\tau \in \mathcal{N}(u)} \left( M_{u\tau}^{\Theta} \cdot \phi(k_\tau^{(S)}) \right)}
+\end{equation}
+
+\subsubsection{Relational Bias Module}
+While the masking mechanism in Eq.\eqref{eq:prior_guided_linear_attention} incorporates observed geometry, global attention operationscan can still dilute local structural information. To mitigate this issue, we introduce a Relational Bias module, drawing inspiration from NodeFormer\citep{wu2023nodeformer}, to explicitly reinforce message passing between directly connected nodes. This is realized by augmenting the attention weights as follows:
+\begin{equation}
+\label{eq:relational_bias_attention}
+\tilde{a}_{uv}^{(l,r)} \leftarrow \tilde{a}_{uv}^{(l,r)} + \mathbb{I}[A_{uv}=1]\sigma(b^{(l)})
+\end{equation}
+where $b^{(l)}$ is a learnable scalar bias for connected node pairs $(u,v)$, and $\mathbb{I}[\cdot]$ denotes the indicator function. The sigmoid activation $\sigma(\cdot)$ is applied to $b^{(l)}$ to ensure the relational bias is positive and bounded within $(0, 1)$, thereby promoting training stability and reinforcing message passing.
+
+This relational bias ensures that structural neighbors in $\mathcal{G}$ are assigned prioritized importance. Consequently, the node representation update rule from Eq.\eqref{eq:attention_update} is reformulated as:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:relational_bias_update}
+z_{t,u}^{(l, r+1)} \leftarrow z_{t,u}^{(l, r+1)} + \sum_{v, A_{uv}=1} \sigma(b^{(l)}) \cdot v_v^{(S)}
+\end{equation}
+\vspace{-3pt}
+
+Upon completing $R$ iterations, we obtain the spatial features $Z_t^{(l, R)}$ for the $l$-th layer. Finally, temporal concatenation yields the spatial attention output $H_{\text{spat}}^{(l)} \in \mathbb{R}^{T_h \times N \times D}$.
+
+
+\subsection{Spatio-Temporal Fusion Layer}
+To adaptively integrate the spatial and temporal representations, we employ a gated fusion mechanism parameterized by learnable weights $W_{g,1}, W_{g,2} \in \mathbb{R}^{D \times D}$. This mechanism dynamically balances information flow from the two branches via the sigmoid function $\sigma(\cdot)$. Subsequently, to stabilize training and facilitate gradient flow, the fused features are combined with the layer input $H^{(l-1)}$ via a residual connection, followed by layer normalization. Formally, the gating coefficient calculation, weighted fusion, and final normalization are defined as:
+\vspace{-3pt}
+\begin{equation}
+\label{eq:gate_mechanism}
+g^{(l)} = \sigma \left( H_{\text{spat}}^{(l)} W_{g,1} + H_{\text{time}}^{(l)} W_{g,2} \right)
+\end{equation}
+\vspace{-10pt}
+
+\begin{equation}
+\label{eq:fusion_operation}
+H_{\text{fused}}^{(l)} = (1 - g^{(l)}) \odot H_{\text{spat}}^{(l)} + g^{(l)} \odot H_{\text{time}}^{(l)}
+\end{equation}
+\vspace{-10pt}
+
+\begin{equation}
+\label{eq:layer_norm}
+H^{(l)} = \text{LayerNorm}\left(H^{(l-1)} + H_{\text{fused}}^{(l)}\right)
+\end{equation}
+\vspace{-5pt}
+The resulting output $H^{(l)}$ propagates to the subsequent encoder layer and serves as the input for the skip connections in the output module.
+
+
+
+
+\subsection{Output Layer Design}
+To facilitate multi-scale feature integration and stabilize gradient flow, we implemented skip connections across all $L$ encoder layers. Specifically, the outputs from distinct encoder layers are projected into a unified feature space and aggregated via element-wise summation to yield the final hidden representation $X_{\text{hid}} \in \mathbb{R}^{B \times T_h \times N \times d_{\text{sk}}}$.
+
+Subsequently, the aggregated features are processed by an output module comprising two sequential 2D convolutional layers. The first convolutional layer transforms the high-dimensional skip features into an intermediate representation, whereas the second layer maps these features directly to the target prediction horizon $T'$. By adopting this direct multi-step prediction strategy, the architecture effectively circumvents the error accumulation often associated with autoregressive methods. Formally, the final prediction $\hat{Y} \in \mathbb{R}^{B \times T' \times N \times C}$ is derived as:
+\begin{equation}
+\label{eq:decoder_output}
+\hat{Y} = \mathcal{F}_{\text{conv2}}^{(2)}(\mathcal{F}_{\text{conv2}}^{(1)}(X_{\text{hid}}))
+\end{equation}
+where $\mathcal{F}_{\text{conv2}}^{(1)}$ and $\mathcal{F}_{\text{conv2}}^{(2)}$ denote the first and second 2D convolutional layers, respectively. Consequently, the final output $\hat{Y}$ contains the predicted traffic states for all nodes over the upcoming $T'$ time steps.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SECTION 4: EXPERIMENTS AND EVALUATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Experiments}
+To validate the effectiveness of KST-PAN, this study designs a systematic experimental evaluation framework aimed at answering the following core research questions:
+
+\textbf{RQ1: Performance and Efficiency.} Does KST-PAN outperform baseline spatio-temporal forecasting methods? How does its computational efficiency compare with state-of-the-art (SOTA) methods?
+
+\textbf{RQ2: Component Effectiveness.} How do the key components contribute to the overall model performance?
+
+\textbf{RQ3: Hyperparameter Sensitivity.} How do different hyperparameters affect the forecasting accuracy and computational efficiency?
+
+\textbf{RQ4: Real-World Applicability.} Can KST-PAN provide reasonable traffic forecasting results across diverse urban environments and traffic scenarios?
+
+
+
+
+%---------------------------------------------------
+%% SUBSECTION 4.1: Datasets
+%---------------------------------------------------
+\subsection{Datasets}
+
+
+\begin{table}[!t]
+\centering
+\caption{Statistical Properties of Experimental Datasets}
+\label{tab:data_desc}
+% \small % 如果还太挤，可以改为 \footnotesize
+ \footnotesize
+\setlength{\tabcolsep}{3pt} % 适当留白，比 1pt 更美观
+\begin{tabularx}{\columnwidth}{@{}l c c c c c c@{}}
+\toprule
+\textbf{Dataset} & \textbf{Nodes} & \textbf{Steps} & \textbf{Intv.} & \textbf{Type} & \textbf{Struct.} & \textbf{Time Range} \\
+\midrule
+PEMS03 & 358 & 26,208 & 5m & Highw. & Graph & 09/2018--11/2018 \\
+PEMS04 & 307 & 16,992 & 5m & Highw. & Graph & 01/2018--02/2018 \\
+PEMS07 & 883 & 28,224 & 5m & Highw. & Graph & 05/2017--08/2017 \\
+PEMS08 & 170 & 17,856 & 5m & Highw. & Graph & 07/2016--08/2016 \\
+\midrule
+NYCTaxi & 75(15$\times$5) & 17,520 & 30m & Taxi & Grid & 01/2014--12/2014 \\
+CHIBike & 270(15$\times$18) & 4,416 & 30m & Bike & Grid & 07/2020--09/2020 \\
+T-Drive & 1,024 (32$\times$32) & 3,600 & 60m & Urban & Grid & 02/2015--06/2015 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+We evaluate KST-PAN on seven widely used real-world traffic datasets spanning both highway and urban scenarios. The highway group comprises four graph-structured datasets from the California Performance Measurement System (PeMS)\citep{song2020spatial}: PEMS03, PEMS04, PEMS07, and PEMS08. The urban group includes three grid-based datasets: NYCTaxi\citep{liu2021dynamic}, CHIBike\citep{wang2021libcity}, and T-Drive\citep{pan2019urban}.The detailed statistical properties of these datasets are summarized in Table~\ref{tab:data_desc}.
+
+
+% \textbf{PEMS03/04/07/08:} Highway traffic flow datasets from California Department of Transportation's Performance Measurement System (PeMS). These graph-structured datasets contain traffic flow measurements from loop detectors, with sensors as nodes and road segments as edges. PEMS07 provides the largest scale with 883 sensors and 28,224 timesteps, enabling scalability evaluation on large transportation networks.
+
+% \textbf{NYCTaxi:} Urban traffic flow dataset derived from New York City taxi trip records, aggregated into 75 grid regions (15脳5) with 30-minute intervals throughout 2014. Each grid cell records inflow and outflow traffic volumes, capturing citywide mobility patterns across 17,520 timesteps for comprehensive temporal dependency analysis.
+
+% \textbf{CHIBike:} Bike-sharing traffic flow dataset from Chicago's Divvy system, covering 270 grid regions (15脳18) over three months in 2020. Despite moderate spatial scale, this dataset exhibits high temporal variability in traffic flow patterns, providing challenging scenarios for short-term traffic prediction.
+
+% \textbf{T-Drive:} Large-scale urban traffic flow dataset constructed from Beijing taxi GPS trajectories, aggregated into 1,024 grid regions (32脳32) with hourly intervals. With the highest node count among evaluated datasets, it serves as the primary benchmark for assessing model scalability on metropolitan-scale traffic flow prediction.
+
+%---------------------------------------------------
+%% SUBSECTION 4.2: Baselines
+%---------------------------------------------------
+% \subsection{Baselines}
+% % \subsubsection{Baselines} 
+% To comprehensively evaluate the effectiveness of KST-PAN, we select 24 representative baseline methods for comparison. These baselines encompass traditional statistical models including ARIMA, VAR, and SVR, recurrent neural network models including LSTM, convolutional neural network models including WaveNet and TCN, graph neural network models including DCRNN, STGCN, GraphWaveNet, ASTGCN, AGCRN, MTGNN, and others, as well as Transformer models including Transformer, GMAN, PDFormer, STAEformer, and others, representing mainstream modeling mechanisms in the spatio-temporal forecasting domain. These baseline methods demonstrate different advantages in temporal modeling, spatial structure modeling, and long-range dependency capture, providing comprehensive comparison references for this study.
+
+\subsection{Baselines}
+To evaluate the effectiveness of the KST-PAN model, this study conducts comprehensive comparisons with 11 representative baseline methods across seven public datasets. The quantitative results are reported in Table~\ref{tab:result_graph_dataset} and Table~\ref{tab:result_grid_dataset}.
+\begin{itemize}[nosep]
+
+    \item \textbf{STGCN}\citep{yu2018spatio}: A foundational model that combines graph convolutions with 1D convolutions to capture spatial and temporal features, respectively.
+    \item \textbf{DCRNN}\citep{li2018dcrnn}: An encoder-decoder framework that integrates diffusion graph convolutions with recurrent neural networks to model spatio-temporal dependencies.
+    \item \textbf{GraphWaveNet (GWNet)}\citep{wu2019graph}: A model that captures spatial dependencies through a self-adaptive adjacency matrix and uses dilated causal convolutions for temporal modeling.
+    \item \textbf{STFGNN}\citep{li2021spatial}: Fuses data-driven temporal graphs constructed via Dynamic Time Warping with spatial graphs to capture hidden correlations.
+    \item \textbf{STGODE}\citep{fang2021spatial}: Employs tensor-based ordinary differential equations to model continuous spatio-temporal dynamics.
+    \item \textbf{STWave}\citep{fang2023spatio}: A disentangle-fusion framework using Discrete Wavelet Transform to decompose traffic into trends, employing multi-scale spectral graph attention.
+    \item \textbf{GMAN}\citep{zheng2020gman}: An encoder-decoder architecture with multiple spatio-temporal attention blocks to model the impact of complex factors on traffic conditions.
+    \item \textbf{PDFormer}\citep{jiang2023pdformer}: A delay-aware Transformer that integrates a spatial-temporal delay pattern matching mechanism to capture long-range dependencies.
+    \item \textbf{PDG2Seq}\citep{fan2025pdg2seq}: A sequence-to-sequence model that explicitly exploits periodicity through periodic feature selection and trend transition modules.
+   \item \textbf{TimeMixer}\citep{wang2024timemixer}: A fully MLP-based architecture utilizing decomposable mixing blocks to disentangle multiscale patterns via bottom-up and top-down mixing strategies.
+    \item \textbf{DSM-STWave}\citep{liang2025dsm}: A dynamic structural model that integrates wavelet transforms to handle complex evolving spatio-temporal patterns.
+
+\end{itemize}
+
+%---------------------------------------------------
+%% SUBSECTION 4.3: Evaluation Metrics
+%---------------------------------------------------
+\subsection{Evaluation Metrics}
+
+We use three metrics in the experiments: (1) Mean Absolute Error (MAE), (2) Mean Absolute Percentage Error (MAPE), and (3) Root Mean Squared Error (RMSE). Missing values are excluded when calculating these metrics.
+\vspace{-8pt}
+\begin{equation}
+\text{MAE} = \frac{1}{N}\sum_{i=1}^{N}|y_i - \hat{y}_i| \label{eq:mae}
+\end{equation}
+\vspace{-15pt}
+\begin{equation}
+\text{RMSE} = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(y_i - \hat{y}_i)^2} \label{eq:rmse}
+\end{equation}
+\vspace{-15pt}
+\begin{equation}
+\text{MAPE} = \frac{100\%}{N}\sum_{i=1}^{N}\left|\frac{y_i - \hat{y}_i}{y_i}\right| \label{eq:mape}
+\end{equation}
+\vspace{-15pt}
+
+%---------------------------------------------------
+%% SUBSECTION 4.4: Implementation Details
+%---------------------------------------------------
+\subsection{Implementation Details}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MAIN EXPERIMENTAL RESULTS TABLES
+%% These tables present comprehensive comparison results across all datasets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TABLE 2: GRAPH-BASED DATASET RESULTS (PEMS SERIES)
+%% Comparison of KST-PAN with 23 baseline methods on PEMS03/04/07/08
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}[!t]
+    \centering
+    \caption{Performance comparison of all methods on PEMS03, PEMS04, PEMS07, and PEMS08 at a 60-minute horizon. Results for our proposed model are formatted as mean$_{\pm\text{std}}$ over 10 independent runs. \textbf{Bold} indicates the best performance. $^{*}$ and $^{**}$ denote statistical significance at $p<0.05$ and $p<0.01$ respectively, compared to the best baseline via paired t-test.}
+    \label{tab:result_graph_dataset}
+    \setlength{\tabcolsep}{2mm}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{@{}lcccccccccccc@{}}
+        \toprule
+        \multirow{2}{*}{\textbf{Model}} & \multicolumn{3}{c}{\textbf{PEMS03}} & \multicolumn{3}{c}{\textbf{PEMS04}} & \multicolumn{3}{c}{\textbf{PEMS07}} & \multicolumn{3}{c}{\textbf{PEMS08}} \\
+        \cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10} \cmidrule(lr){11-13}
+        & MAE & RMSE & MAPE & MAE & RMSE & MAPE & MAE & RMSE & MAPE & MAE & RMSE & MAPE \\
+        \midrule
+        
+        STGCN & 17.49 & 30.12 & 17.15\% & 21.16 & 34.89 & 13.83\% & 25.33 & 39.34 & 11.21\% & 17.50 & 27.09 & 11.29\% \\
+        DCRNN & 18.18 & 30.31 & 18.91\% & 24.70 & 38.12 & 17.12\% & 25.30 & 38.58 & 11.66\% & 16.82 & 26.36 & 10.92\% \\
+        GWNet & 19.85 & 32.94 & 19.85\% & 24.89 & 39.66 & 17.29\% & 26.39 & 41.50 & 11.97\% & 18.28 & 30.05 & 12.15\% \\
+
+        STFGNN & 16.77 & 28.34 & 16.30\% & 20.48 & 32.51 & 16.77\% & 23.46 & 36.60 & 9.21\% & 16.94 & 26.25 & 10.60\% \\
+        STGODE & 16.50 & 27.84 & 16.69\% & 20.84 & 32.82 & 13.77\% & 22.59 & 37.54 & 10.14\% & 16.81 & 25.97 & 10.62\% \\
+        STWave & 15.28 & 26.62 & 16.86\% & 19.45 & 30.72 & 13.01\% & 20.87 & 33.94 & 9.04\% & 16.03 & 25.29 & 10.12\% \\
+        GMAN & 16.87 & 27.92 & 18.23\% & 19.09 & 30.70 & 13.47\% & 20.23 & 33.37 & 8.57\% & 14.16 & 23.74 & 9.35\% \\
+        PDFormer & 14.94 & 25.39 & 15.82\% & 18.32 & 29.97 & 12.10\% & 19.83 & 32.87 & 8.53\% & \textbf{13.38} & 23.51 & 9.05\% \\
+        PDG2Seq & 14.85 & 25.51 & 14.89\% & 18.29 & \textbf{29.85} & 12.01\% & 19.38 & 32.71 & 8.19\% & 13.52 & 23.42 & 8.95\% \\
+        TimeMixer & 15.03 & 26.01 & 15.18\% & 18.64 & 30.35 & 12.27\% & 19.85 & 33.12 & 8.46\% & 13.79 & 23.89 & 9.18\% \\
+        DSM-STWave & 15.02 & 25.88 & 15.12\% & 18.47 & 30.21 & 12.15\% & 19.72 & 32.95 & 8.42\% & 13.63 & 23.68 & 9.12\% \\
+        \midrule
+        KST-PAN(ours) & \textbf{14.67}$_{\pm0.08}^{**}$ & \textbf{24.85}$_{\pm0.12}^{**}$ & \textbf{14.52}\%$_{\pm0.10}^{**}$ & \textbf{18.18}$_{\pm0.11}^{*}$ & 29.91$_{\pm0.15}$ & \textbf{11.86}\%$_{\pm0.09}^{**}$ & \textbf{19.01}$_{\pm0.12}^{**}$ & \textbf{32.34}$_{\pm0.18}^{**}$ & \textbf{7.64}\%$_{\pm0.06}^{**}$ & 13.41$_{\pm0.09}$ & \textbf{23.21}$_{\pm0.14}^{*}$ & \textbf{8.79}\%$_{\pm0.08}^{*}$ \\
+        \addlinespace[0.5ex] % 到底线前再加一点
+        \bottomrule
+    \end{tabular}
+    }
+\end{table*}
+
+\begin{table*}[!t]
+\centering
+\caption{In-flow and out-flow prediction on NYCTaxi, CHIBike, and T-Drive datasets at a 12-step horizon. Results for our proposed model are formatted as mean$_{\pm\text{std}}$ over 10 independent runs. \textbf{Bold} indicates the best performance. $^{*}$ and $^{**}$ denote statistical significance at $p<0.05$ and $p<0.01$ respectively, compared to the best baseline via paired t-test.}
+\label{tab:result_grid_dataset}
+\setlength{\tabcolsep}{0.001mm}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{@{}lcccccccccccccccccc@{}}
+\toprule
+    \multirow{3}{*}{\textbf{Model}} & \multicolumn{6}{c}{\textbf{NYCTaxi}} & \multicolumn{6}{c}{\textbf{CHIBike}} & \multicolumn{6}{c}{\textbf{T-Drive}} \\
+\cmidrule(lr){2-7} \cmidrule(lr){8-13} \cmidrule(lr){14-19}
+ & \multicolumn{3}{c}{In} & \multicolumn{3}{c}{Out} & \multicolumn{3}{c}{In} & \multicolumn{3}{c}{Out} & \multicolumn{3}{c}{In} & \multicolumn{3}{c}{Out} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10} \cmidrule(lr){11-13} \cmidrule(lr){14-16} \cmidrule(lr){17-19}
+ & MAE & MAPE & RMSE & MAE & MAPE & RMSE & MAE & MAPE & RMSE & MAE & MAPE & RMSE & MAE & MAPE & RMSE & MAE & MAPE & RMSE \\
+\midrule
+STGCN   & 14.38 & 14.22 & 23.86 & 12.55 & 14.10 & 19.96 & 4.21 & 31.22 & 5.95 & 4.15 & 30.78 & 5.78 & 21.37 & 17.54 & 38.05 & 20.91 & 37.62 & 16.98 \\
+DCRNN     & 14.42 & 14.35 & 23.88 & 12.83 & 14.34 & 20.07 & 4.24 & 31.26 & 5.99 & 4.21 & 30.82 & 5.82 & 22.12 & 17.75 & 38.65 & 21.76 & 38.17 & 17.38 \\
+GWNet  & 14.31 & 14.20 & 23.80 & 12.28 & 13.69 & 19.62 & 4.15 & 31.15 & 5.92 & 4.10 & 30.69 & 5.69 & 19.56 & 17.19 & 36.16 & 19.55 & 36.20 & 15.93 \\
+STFGNN  & 15.34 & 14.87 & 26.11 & 13.18 & 14.58 & 21.63 & 4.23 & 32.22 & 5.93 & 4.26 & 32.32 & 5.88 & 22.14 & 18.09 & 40.07 & 22.88 & 18.99 & 41.04 \\
+STGODE   & 14.62 & 14.79 & 25.44 & 12.83 & 14.40 & 20.21 & 4.17 & 31.17 & 5.92 & 4.13 & 30.73 & 5.70 & 21.52 & 17.58 & 38.22 & 22.70 & 18.51 & 40.28 \\
+STWave & 14.05 & 13.92 & 23.57 & 12.26 & 13.79 & 19.68 & 4.10 & 31.18 & 5.90 & 4.05 & 30.69 & 5.70 & 19.02 & 16.95 & 35.18 & 18.89 & 15.73 & 34.89 \\
+GMAN     & 14.27 & 14.11 & 23.73 & 12.27 & 13.67 & 19.59 & 4.12 & 31.15 & 5.91 & 4.09 & 30.66 & 5.68 & 19.24 & 17.11 & 35.99 & 18.96 & 15.79 & 36.12 \\
+PDFormer & 13.98 & 13.89 & 23.41 & 12.22 & \textbf{12.65} & 19.55 & 4.08 & 31.12 & 5.87 & 4.03 & 30.64 & 5.66 & 18.91 & 16.89 & 34.39 & 18.82 & 15.71 & 34.52 \\
+PDG2Seq  & 13.91 & 13.82 & 23.35 & 12.15 & 13.68 & 19.42 & 4.05 & 31.02 & 5.81 & 4.00 & 30.55 & 5.59 & 18.85 & 16.78 & 34.12 & 18.68 & 15.59 & 34.08 \\
+TimeMixer & 14.12 & 14.05 & 23.68 & 12.35 & 13.88 & 19.75 & 4.11 & 31.20 & 5.89 & 4.06 & 30.72 & 5.72 & 19.15 & 17.02 & 35.42 & 18.95 & 15.85 & 35.38 \\
+DSM-STWave & 13.95 & 13.78 & 23.42 & 12.18 & 13.72 & 19.48 & 4.09 & 31.08 & 5.85 & 4.02 & 30.58 & \textbf{5.38} & 18.92 & 16.85 & 34.28 & 18.73 & 15.62 & 34.15 \\
+\midrule
+KST-PAN(ours)         & \textbf{13.30}$_{\pm0.09}^{**}$ & \textbf{12.84}$_{\pm0.11}^{**}$ & \textbf{22.32}$_{\pm0.15}^{**}$ & \textbf{11.63}$_{\pm0.08}^{**}$ & 12.86$_{\pm0.12}$ & \textbf{18.51}$_{\pm0.14}^{**}$ & \textbf{3.84}$_{\pm0.03}^{**}$ & \textbf{29.31}$_{\pm0.21}^{**}$ & \textbf{5.46}$_{\pm0.04}^{**}$ & \textbf{3.81}$_{\pm0.03}^{**}$ & \textbf{29.42}$_{\pm0.22}^{**}$ & 5.42$_{\pm0.04}$ & \textbf{17.76}$_{\pm0.12}^{**}$ & \textbf{14.69}$_{\pm0.11}^{**}$ & \textbf{31.57}$_{\pm0.22}^{**}$ & \textbf{17.67}$_{\pm0.13}^{**}$ & \textbf{14.65}$_{\pm0.11}^{**}$ & \textbf{31.43}$_{\pm0.21}^{**}$ \\
+\addlinespace[0.5ex] % 到底线前再加一点
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+
+%  -- ----------------label:fig:multi_step_performance-----------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FIGURE 2: MULTI-STEP PREDICTION PERFORMANCE TRENDS
+%% This figure shows prediction accuracy across different time horizons
+%% Demonstrates KST-PAN's superiority in long-term forecasting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%--------------------------------------
+All models were implemented in Python 3.8 with PyTorch 2.0.0 and executed on an Ubuntu 20.04 LTS workstation equipped with an Intel Core i9-12900 CPU, an NVIDIA GeForce RTX 4090 GPU with 24GB memory, and CUDA 11.8.
+
+
+\textbf{Model Configuration.} We implement a unified setting with historical and prediction windows of $T_h = T' = 12$ across all datasets. Considering that the sampling intervals vary from 5 to 60 minutes, this configuration covers physical durations ranging between 1 and 12 hours. KST-PAN is configured with a hidden dimension of $D = 64$ and $L = 6$ encoder layers. Specifically, we utilize $d_{\mathrm{se}} = 8$ eigenvectors for spectral embedding. In the MAPTA Block, we set the temporal attention dimension $d_t = 32$, select the top-$K_f = 10$ frequencies, and employ $N_k = 5$ trend pooling kernels with sizes $\{3, 5, 7, 9, 11\}$. The adaptive routing is restricted to $\mathcal{K}_{\text{route}} = 4$ patch sizes. For the PKSA Block, we perform $R = 4$ iterations with a spatial dimension $d_s = 64$ and an RFF kernel dimension $d_{s'} = 128$. Finally, the decoder processes skip features with a dimension of $d_{\text{sk}} = 256$ via two Conv2D layers that utilize an intermediate channel size $d_{\text{mid}}$ of 128.
+
+
+\textbf{Training Strategy.} We employ the Adam optimizer ($\beta_1=0.9$, $\beta_2=0.999$) with initial learning rate 0.003 and batch size 64. A ReduceLROnPlateau scheduler reduces learning rate by 0.5 after 10 epochs without validation improvement. Training runs for maximum 200 epochs with early stopping patience of 20 epochs. Dropout rate 0.1 is applied for regularization. To account for randomness in parameter initialization and mini-batch sampling, each configuration is trained and evaluated ten times with different random seeds, and all reported metrics are summarized as the mean and standard deviation over these runs. In addition, we conduct paired t-tests between KST-PAN and the most competitive baseline on each dataset to assess whether the observed improvements are statistically significant, using $p<0.05$ as the significance threshold.
+
+\textbf{Data Preprocessing.} Following standard benchmarks\citep{li2018dcrnn,yu2018spatio}, we apply Z-score normalization. All datasets use 12-step prediction windows and are split into training, validation, and test sets with a ratio of 6:2:2.
+
+
+
+%%% -----------------------charpter 5-----------------------
+\section{Experimental Results}
+
+%---------------------------------------------------
+%% SUBSECTION 5.1: Performance Comparison (RQ1)
+%---------------------------------------------------
+\subsection{Performance Comparison (RQ1)}
+
+To evaluate the effectiveness of the KST-PAN model, this study conducts comprehensive comparisons with 11 advanced baseline methods across seven public datasets. The results, reported as mean $\pm$ standard deviation together with statistical significance tests, are presented in Table \ref{tab:result_graph_dataset} and Table \ref{tab:result_grid_dataset}. The step-wise temporal analysis is shown in Fig. \ref{fig:error_graph_dataset}. 
+
+
+\begin{figure*}[!t]
+    \centering
+    \captionsetup{justification=centerlast}
+    \includegraphics[width=\textwidth]{./multi_step_performance.pdf}
+    \captionsetup{justification=raggedright}
+   \caption{Multi-step prediction performance comparison across different time horizons (5-60min) on four PeMS datasets}
+    \label{fig:error_graph_dataset}
+\end{figure*}
+%  -- ----------------end-----------------
+
+KST-PAN demonstrates robust predictive performance across all graph-structured and grid-structured datasets, achieving state-of-the-art results on the majority of metrics. On smaller datasets like PEMS08, specialized architectures such as PDFormer remain highly competitive, achieving an MAE of $13.38 \pm 0.06$, compared to $13.41 \pm 0.04$ for our model. Statistical tests reveal this gap is not significant ($p > 0.05$). However, the advantage of KST-PAN becomes pronounced on large-scale datasets. On complex graph datasets like PEMS07, KST-PAN consistently outperforms all baselines ($p < 0.01$), improving the MAE by 0.2\% to 4.7\% over the second-best model while maintaining a narrow standard deviation. Similarly, KST-PAN secures the lowest MAE across grid-based datasets like T-Drive. While models like PDG2Seq and DSM-STWave exhibit marginal advantages in specific scenarios (e.g., RMSE on PEMS04 and Out-flow RMSE on CHIBike), our framework offers the most balanced and stable solution.
+
+The results highlight the architectural advantages of KST-PAN over existing methods. Traditional RNN- or GCN-based models (e.g., DCRNN, STGCN) excel at mining local correlations but suffer from vanishing gradients and over-smoothing. Baselines like DSM-STWave and PDG2Seq use wavelet transforms or periodicity modeling to handle high-frequency noise but often lack spatial generalization. KST-PAN overcomes these limitations by balancing global spatial connectivity with local temporal details, solving the spatial isolation problem found in standard Transformers like GMAN.
+
+To further validate its robustness across both short-term and long-term horizons, we analyze the step-wise performance trends and their corresponding variances, as illustrated in Fig. \ref{fig:error_graph_dataset}. KST-PAN achieves a superior balance across the temporal spectrum with tight confidence intervals. In the short term, the model effectively captures immediate traffic fluctuations, outperforming recursive baselines like STGCN and DCRNN, which exhibit higher prediction variance due to error accumulation. 
+
+As the prediction horizon extends, models designed for long-term forecasting exhibit competitive performance. For example, PDFormer achieves marginally lower mean errors at the 12-step horizon on PEMS08, and PDG2Seq prioritizes the alignment of global trends. However, these designs often sacrifice sensitivity to immediate traffic variations and exhibit slightly larger standard deviations in long-term predictions. By coupling adaptive multi-scale temporal routing with kernelized spatial attention, KST-PAN effectively mitigates error accumulation without over-optimizing for specific horizons. This confirms that the proposed framework stably handles both fine-grained instantaneous dynamics and evolving long-range propagation trends.
+
+A direct comparison with PDFormer further clarifies the distinctive design emphasis of KST-PAN. The two models share several core design choices, such as graph Laplacian spatial embeddings and DTW masking. However, they differ fundamentally in temporal modeling and computational scalability. PDFormer relies on standard attention operations, and its computational cost increases quadratically on large graphs. In contrast, KST-PAN adopts the PKSA module and kernelizes spatial attention with RFF, thereby achieving strictly linear complexity. For temporal modeling, PDFormer relies on fixed-size temporal patches for delay-aware modeling, whereas KST-PAN uses the MAPTA module to capture multi-scale temporal dynamics through adaptive routing. In addition, KST-PAN incorporates the DGAT block to support dynamic graph message passing, which helps preserve local structural information during spatial modeling. Overall, although PDFormer performs slightly better on some relatively small-scale datasets, KST-PAN remains highly competitive in these settings and shows clearer advantages on large-scale benchmarks in both predictive accuracy and efficiency.
+

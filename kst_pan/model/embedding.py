@@ -46,12 +46,13 @@ class LaplacianPE(nn.Module):
 
 class DataEmbedding(nn.Module):
     def __init__(self, feature_dim, embed_dim, lape_dim, adj_mx,
-                 drop=0., add_time_in_day=False, add_day_in_week=False,
+                 drop=0., add_time_in_day=False, add_day_in_week=False, add_holiday=False,
                  device=torch.device('cpu')):
         super().__init__()
 
         self.add_time_in_day = add_time_in_day
         self.add_day_in_week = add_day_in_week
+        self.add_holiday = add_holiday
         self.device = device
         self.embed_dim = embed_dim
         self.feature_dim = feature_dim
@@ -66,6 +67,10 @@ class DataEmbedding(nn.Module):
         if self.add_day_in_week:
             weekday_size = 7
             self.weekday_embedding = nn.Embedding(weekday_size, embed_dim)
+        
+        if self.add_holiday:
+            holiday_size = 2 # 0 for not holiday, 1 for holiday
+            self.holiday_embedding = nn.Embedding(holiday_size, embed_dim)
 
         self.spatial_embedding = LaplacianPE(lape_dim, embed_dim)
         self.dropout = nn.Dropout(drop)
@@ -85,6 +90,13 @@ class DataEmbedding(nn.Module):
             x = x + self.weekday_embedding(
                 origin_x[:, :, :, self.feature_dim + 1: self.feature_dim + 8].argmax(dim=3)
             )
+        
+        if self.add_holiday:
+            # Assuming holiday is a binary feature (0 or 1) at feature_dim + 8
+            # and it's already one-hot encoded or directly 0/1
+            holiday_feature_index = self.feature_dim + 8
+            holiday_data = origin_x[:, :, :, holiday_feature_index].long()
+            x = x + self.holiday_embedding(holiday_data)
 
         x = x + self.spatial_embedding(lap_mx)
         x = self.dropout(x)

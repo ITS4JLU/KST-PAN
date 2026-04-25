@@ -94,6 +94,9 @@ class KST_PANDataset:
         self.cluster_max_iter = config.get("cluster_max_iter", 5)
         self.scaler_type = config.get('scaler_type', 'standard')
         self.cache_dataset = config.get('cache_dataset', True)
+        self.add_time_in_day = config.get("add_time_in_day", False)
+        self.add_day_in_week = config.get("add_day_in_week", False)
+        self.add_holiday = config.get("add_holiday", False)
 
         self.adj_mx = None
         self.sd_mx = None
@@ -163,13 +166,29 @@ class KST_PANDataset:
         times_pd = pd.to_datetime(times)
         time_of_day = (times_pd.hour * 60 + times_pd.minute) / 1440.0
         day_of_week = times_pd.dayofweek / 6.0
+        is_holiday = ((times_pd.dayofweek == 5) | (times_pd.dayofweek == 6)).astype(int)
+
+        # Initialize ext_dim to 0
+        self.ext_dim = 0
 
         tod_feature = np.tile(time_of_day[:, np.newaxis, np.newaxis], (1, self.num_nodes, 1))
         dow_feature = np.tile(day_of_week[:, np.newaxis, np.newaxis], (1, self.num_nodes, 1))
+        holiday_feature = np.tile(is_holiday[:, np.newaxis, np.newaxis], (1, self.num_nodes, 1))
 
-        self.data = np.concatenate([data_3d, tod_feature, dow_feature], axis=-1)
-        self.feature_dim += 2
-        self.ext_dim = 2
+        # Concatenate features based on flags
+        features_to_concat = [data_3d]
+        if self.add_time_in_day:
+            features_to_concat.append(tod_feature)
+            self.ext_dim += 1
+        if self.add_day_in_week:
+            features_to_concat.append(dow_feature)
+            self.ext_dim += 1
+        if self.add_holiday:
+            features_to_concat.append(holiday_feature)
+            self.ext_dim += 1
+
+        self.data = np.concatenate(features_to_concat, axis=-1)
+        self.feature_dim = self.feature_dim + self.ext_dim
 
     def _get_dtw(self):
         cache_path = os.path.join(self.cache_dir, 'dataset_cache', f'dtw_{self.dataset}.npy')
